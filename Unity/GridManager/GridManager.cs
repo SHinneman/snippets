@@ -139,8 +139,9 @@ namespace GridUtilities
         private Vector3 bottomLeft = new Vector3();
         [SerializeField]    
         private Vector3 bottomRight = new Vector3();
-
+        [SerializeField]
         private List<int> cellKeys = new List<int>();
+        [SerializeField]
         private List<Cell> cellValues = new List<Cell>();
 
         /// <summary>
@@ -251,7 +252,7 @@ namespace GridUtilities
         /// </summary>
 
         public int IdCounter = 0;
-        public Dictionary<int, Grid> Grids { get; set; }
+        public Dictionary<int, Grid> Grids = new Dictionary<int, Grid>();
 
         [SerializeField]
         private List<int> gridKeys = new List<int>();
@@ -268,7 +269,7 @@ namespace GridUtilities
         /// <returns></returns>
         public Grid AddGrid(int columns, int rows, float cellSize, Vector3 position)
         {
-            Grid grid = new Grid(++IdCounter, columns, rows, cellSize, position);
+            Grid grid = new Grid(IdCounter++, columns, rows, cellSize, position);
             Grids[grid.Id] = grid;
             return Grids[grid.Id];
         }
